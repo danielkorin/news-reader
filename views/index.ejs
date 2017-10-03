@@ -3,6 +3,7 @@
   <head>
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+
     <% include partials/head.ejs %>
   </head>
   <body>
@@ -24,12 +25,13 @@
         <div class="news-box"></div>
         <div class="news-box"></div>
 
+        <button class="news-box" onclick="callFunction()">Click me to call</button>
+
       </div>
       
 
 
     </div>
-
 
 
     <!-- MAIN CONTENT ENDS -->
@@ -42,3 +44,56 @@
 
   </body>
 </html>
+
+
+
+<script type="text/javascript">
+
+
+  function callFunction()
+  {
+
+    // Making a new XMLH request to News Api
+    var xhr = new XMLHttpRequest();
+
+    xhr.open('GET', "https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=f60b0d8636534ec8bebf545be8fbad5f", true);
+    xhr.send();
+
+    // xhr.onreadystatechange = processRequest;
+    // var response = JSON.parse(xhr.responseText);
+
+    if (xhr.readyState == 4 && xhr.status == 200) {
+        var response = JSON.parse(xhr.response);
+        console.log("hell yeah");
+    }
+    else
+    {
+      console.log("sorry")
+      console.log(xhr)
+    }
+  }
+  
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
