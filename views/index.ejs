@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>Spontia News Reader</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 
     <% include partials/head.ejs %>
@@ -54,7 +54,7 @@
         </a>
 
         <!-- Box - 3 -->
-        <a class="news-box" href="" id="news-box-3">
+        <a class="news-box-class-2" href="" id="news-box-3">
           <img src="" id="image-3" class="image">
 
           <div class="text" id="text-3">
@@ -120,7 +120,6 @@
 
       
 
-
     </div>
 
 
@@ -138,10 +137,14 @@
 
 
 <script type="text/javascript">
-  
+
+
+
   // Function to make a HTTP request to new.api 
   function myFunction()
   {
+
+
 
     var HttpClient = function() {
         this.get = function(aUrl, aCallback) {
@@ -207,7 +210,7 @@
       
       }
 
-      
+    
 
       // div.querySelector('#time')
     }
@@ -215,12 +218,9 @@
       alert("Nothing Found, Sorry");
     }
 
-
-
-
-
-
   }
+
+
 
 
 

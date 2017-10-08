@@ -10,7 +10,7 @@ a {
 
 .main-div
 {
-	height: 1500px;
+	height: 1800px;
 	width: 100%;
 
 	margin-top: 0px;
@@ -33,10 +33,10 @@ a {
 {
 	position: relative;
 	top: 70px;
-	left: 5%;
+	left: 10%;
 	right: 5%;
 
-	height: 1300px;
+	height: 1600px;
 	width: 90%;
 
 	margin-top: 20px;
@@ -53,14 +53,15 @@ a {
 	margin-right: 14px;
 	margin-bottom: 25px;
 
-    width: 32%;
+    width: 28%;
     padding-bottom: 30%; /* = width for a square aspect ratio */
-    height: 100px;
+    height: 120px;
 
     background-color: white;
 
     box-shadow: 1px 1px 1px #888888;
 
+    color: black;
 }
 
 
@@ -97,6 +98,49 @@ a {
 	top: 0px;
 
 }
+
+.news-box-class-2
+{
+
+	position: relative;
+	float: left;
+
+	margin-right: 14px;
+	margin-bottom: 25px;
+
+    width: 57%;
+    padding-bottom: 30%; /* = width for a square aspect ratio */
+    height: 100px;
+
+    background-color: white;
+
+    box-shadow: 1px 1px 1px #888888;
+	color: black;
+
+}
+.news-box-class-2 .text
+{
+	height: 130px;
+	width: 100%;
+
+	position: absolute;
+	bottom: 0px;
+
+	padding-left: 10px;
+	text-align: left;
+
+}
+
+.news-box-class-2 #author
+{
+	color: grey;
+}
+
+.news-box-class-2 #date
+{
+	color: grey;
+}
+
 
 
 
