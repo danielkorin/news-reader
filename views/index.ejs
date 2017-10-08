@@ -6,8 +6,7 @@
 
     <% include partials/head.ejs %>
   </head>
-  <body>
-    
+<body onload="myFunction()">  
 
 
     <!-- MAIN CONTENT STARTS -->
@@ -20,14 +19,105 @@
 
       <div class="main-content-div">
         
-        <div class="news-box"></div>
-        <div class="news-box"></div>
-        <div class="news-box"></div>
-        <div class="news-box"></div>
+        <!-- Box - 0 -->
+        <a class="news-box" href="" id="news-box-0" >
 
-        <button class="news-box" onclick="callFunction()">Click me to call</button>
+          <img src="" id="image-0" class="image">
 
-      </div>
+          <div class="text" id="text-0">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 1 -->
+        <a class="news-box" href="" id="news-box-1" >
+          <img src="" id="image-1" class="image">
+
+          <div class="text" id="text-1">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 2 -->
+        <a class="news-box" href="" id="news-box-2">
+          <img src="" id="image-2" class="image">
+
+          <div class="text" id="text-2">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 3 -->
+        <a class="news-box" href="" id="news-box-3">
+          <img src="" id="image-3" class="image">
+
+          <div class="text" id="text-3">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 4 -->
+        <a class="news-box" href="" id="news-box-4" >
+          <img src="" id="image-4" class="image">
+
+          <div class="text" id="text-4">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 5 -->
+        <a class="news-box" href="" id="news-box-5">
+          <img src="" id="image-5" class="image">
+
+          <div class="text" id="text-5">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 6 -->
+        <a class="news-box" href="" id="news-box-6">
+          <img src="" id="image-6" class="image">
+
+          <div class="text" id="text-6">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 7 -->
+        <a class="news-box" href="" id="news-box-7">
+          <img src="" id="image-7" class="image">
+
+          <div class="text" id="text-7">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
+        <!-- Box - 8 -->
+        <a class="news-box" href="" id="news-box-8">
+            <img src="" id="image-8" class="image">
+          <div class="text" id="text-8">
+            <h4 id="heading"></h4>
+            <p id="author"></p>
+            <p id="date"></p>
+          </div>
+        </a>
+
       
 
 
@@ -48,31 +138,91 @@
 
 
 <script type="text/javascript">
-
-
-  function callFunction()
+  
+  // Function to make a HTTP request to new.api 
+  function myFunction()
   {
 
-    // Making a new XMLH request to News Api
-    var xhr = new XMLHttpRequest();
+    var HttpClient = function() {
+        this.get = function(aUrl, aCallback) {
+            var anHttpRequest = new XMLHttpRequest();
+            anHttpRequest.onreadystatechange = function() {
+                if (anHttpRequest.readyState == 4 && anHttpRequest.status == 200)
+                    aCallback(anHttpRequest.responseText);
+            }
 
-    xhr.open('GET', "https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=f60b0d8636534ec8bebf545be8fbad5f", true);
-    xhr.send();
-
-    // xhr.onreadystatechange = processRequest;
-    // var response = JSON.parse(xhr.responseText);
-
-    if (xhr.readyState == 4 && xhr.status == 200) {
-        var response = JSON.parse(xhr.response);
-        console.log("hell yeah");
+            anHttpRequest.open( "GET", aUrl, true );
+            anHttpRequest.send( null );
+        }
     }
-    else
+
+    var x = new HttpClient();
+
+
+    x.get("https://newsapi.org/v1/articles?source=business-insider-uk&sortBy=top&apiKey=f60b0d8636534ec8bebf545be8fbad5f", function(response) 
     {
-      console.log("sorry")
-      console.log(xhr)
-    }
+      var json = JSON.parse(response);
+      generateLayout(json);
+    });
   }
-  
+
+
+  // Function to retrive the Articles and add it to the page layout
+  function generateLayout(data){
+
+    if (data){
+      console.log(data.articles);
+
+      var div;
+      var datetime;
+      var d1;
+      var hour;
+      var minute;
+      var myTime;
+
+      for (var i = 0; i < 9; i++) 
+      {
+        //Adding a link to the news-box
+        document.getElementById("news-box-"+i).href = data.articles[i].url;
+
+        //Selecting the div
+        div = document.getElementById('text-'+i);
+
+        //Adding the Title
+        div.querySelector("#heading").innerHTML += data.articles[i].title;
+        //Adding the Author(Source)
+        div.querySelector('#author').innerHTML += data.articles[i].author;
+
+        //Calculating the Time (hh:mm) from the DateTime format 
+        datetime =data.articles[i].publishedAt;
+        d1 = new Date(datetime);
+        minute = d1.getUTCMinutes();
+        hour = d1.getUTCHours();
+        myTime = hour+"h "+minute+"m";
+
+        //Adding the Time
+        div.querySelector('#date').innerHTML += myTime;
+        //Adding the Image Source
+        document.getElementById("image-"+i).src = data.articles[i].urlToImage;
+      
+      }
+
+      
+
+      // div.querySelector('#time')
+    }
+    else{
+      alert("Nothing Found, Sorry");
+    }
+
+
+
+
+
+
+  }
+
+
 
 
 </script>
@@ -84,7 +234,7 @@
 
 
 
-
+<!--data.articles[0].author-->
 
 
 
