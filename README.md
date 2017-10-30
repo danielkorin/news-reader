@@ -6,9 +6,9 @@ Note => This sample is designed as a Personal Project and is still in developmen
 
 # Features
 
-User can select what they want to from 70 trusted news sources like BBC, CNN, Bloomberg and etc
-User can find top articles from multiple news channels at a single web-page
-Provides a Headline and link to the actual website
+* User can select what they want to from 70 trusted news sources like BBC, CNN, Bloomberg and etc
+* User can find top articles from multiple news channels at a single web-page
+* Provides a Headline and link to the actual website
 
 # Limitations
 
@@ -16,8 +16,8 @@ To read the full article, user gets redirected to the web-page of the news sourc
 
 # Technology Stack
 
-NewsApi
-Node.js v8.4.0
-Express.js
+* NewsApi
+* Node.js v8.4.0
+* Express.js
 
 
