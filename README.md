@@ -2,7 +2,7 @@
 
 This sample consists of a simple web page where the user can customize their news-reading experience, by selecting specific news channels.
 
-# This extensively commented sample is designed as a Personal  Project and is still in development stage.
+Note => This extensively commented sample is designed as a Personal  Project and is still in development stage.
 
 # Features
 
